@@ -11,3 +11,8 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require ('jquery')
+global.$ = require('jquery')
+require('@coreui/coreui/dist/js/coreui.bundle.min')
+require('@fortawesome/fontawesome-free/js/all.min')
