@@ -1,0 +1,44 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - Gemfile
+    - Gemfile.lock
+    - 'config/**/*'
+    - bin/**/*
+    - spec/spec_helper.rb
+    - spec/**/*
+    - test/**/*
+
+Layout/LineLength:
+  Enabled: true
+  Max: 100
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/RedundantFreeze:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  Exclude:
+    - 'config/**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'config/**/*'
+
+Style/FormatStringToken:
+  EnforcedStyle: template
