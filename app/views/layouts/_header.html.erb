@@ -1,8 +1,29 @@
 <header class="c-header c-header-light c-header-fixed">
-  <%= link_to root_path do %>
-    <div class="header-nav d-none d-md-flex">
-      <i class="fas fa-home fa-3x"></i>
-      <h1 class="pl-1">Funny Movie</h1>
-    </div>
-  <% end %>
+
+  <ul class="c-header-nav d-md-down-none">
+    <li class="c-header-nav-item px-3"><%= link_to root_path do %>
+        <div class="header-nav d-none d-md-flex">
+          <i class="fas fa-home fa-3x"></i>
+          <h1 class="pl-1">Funny Movie</h1>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+
+  <ul class="c-header-nav mfs-auto">
+    <li class="c-header-nav-item px-3 c-d-legacy-none">
+      <% if current_user %>
+        <span class="user-profiles"><%= current_user.email %></span>
+        <%= link_to 'Logout', users_session_path(current_user), method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= form_with scope: :users, url: users_sessions_path, class: 'd-flex' do |f| %>
+          <%= f.text_field :email,
+                           value: flash && flash[:invalid_fields] && flash[:invalid_fields]['email'],
+                           class: 'form-control' %>
+          <%= f.text_field :password, type: 'password', class: 'form-control ml-2' %>
+          <%= f.submit 'Submit', class: 'btn btn-primary ml-2 ' %>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
 </header>
