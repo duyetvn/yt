@@ -13,4 +13,9 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
     get '/share'
     assert_response 302
   end
+
+  test "able to get index page" do
+    get '/'
+    assert_response :success
+  end
 end

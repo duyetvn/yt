@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
   before_action :require_user_logged_in!, only: %i[new create]
 
-  def index; end
+  def index
+    @movies = Movie.all.includes(:user).order(created_at: :desc)
+  end
 
   def new
     @movie = current_user.movies.new

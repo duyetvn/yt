@@ -20,6 +20,9 @@ class MoviesShareTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_includes(assert_select('#js__flash-area').text, 'Your movie was added.')
+    assert_equal(assert_select('#movie-details').size, 1)
+    link_to_movie = assert_select('#movie-details .movie_title').first.attributes['href'].value
+    assert_equal(link_to_movie, "https://youtu.be/Ne5J4bxWypI")
   end
 
   test 'Share a youtube url not found' do
