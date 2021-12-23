@@ -1,7 +1,16 @@
 require "test_helper"
 
 class MoviesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  include Support::AuthenticationHelperTest
+
+  test "logged in user should get share page" do
+    sign_in_as
+    get '/share'
+    assert_response :success
+  end
+
+  test "unable get share page without authenticated" do
+    get '/share'
+    assert_response 302
+  end
 end

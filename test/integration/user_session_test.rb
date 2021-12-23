@@ -4,7 +4,7 @@ class UserSessionTest < ActionDispatch::IntegrationTest
   let(:user) { FactoryBot.create(:user) }
 
   setup do
-    get "/"
+    get '/'
   end
 
   test 'Sign in successful' do

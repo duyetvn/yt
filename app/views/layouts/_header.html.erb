@@ -14,7 +14,8 @@
     <li class="c-header-nav-item px-3 c-d-legacy-none">
       <% if current_user %>
         <span class="user-profiles"><%= current_user.email %></span>
-        <%= link_to 'Logout', users_session_path(current_user), method: :delete, class: 'btn btn-danger' %>
+        <%= link_to 'Share', new_movie_path, class: 'btn btn-info ml-2' %>
+        <%= link_to 'Logout', users_session_path(current_user), method: :delete, class: 'btn btn-danger ml-2' %>
       <% else %>
         <%= form_with scope: :users, url: users_sessions_path, class: 'd-flex' do |f| %>
           <%= f.text_field :email,
