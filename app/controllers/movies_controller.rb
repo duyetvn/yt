@@ -25,6 +25,19 @@ class MoviesController < ApplicationController
     render :new
   end
 
+  def vote # rubocop:disable Metrics/AbcSize
+    new_vote = current_user.votes.find_or_initialize_by(movie_id: params[:movie_id])
+    if new_vote.new_record? || new_vote.state.nil?
+      new_vote.state = params[:vote_option]
+      new_vote.save
+      @movie = Movie.find_by(id: params[:movie_id])
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def movie_params

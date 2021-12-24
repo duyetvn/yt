@@ -1,0 +1,23 @@
+<% if current_user.state_voting_movie(movie) == Vote.states['voted_up'] %>
+  <span><i class="fas fa-thumbs-up fa-2x"></i></span>
+<% elsif current_user.state_voting_movie(movie) == Vote.states['voted_down'] %>
+  <span><i class="fas fa-thumbs-down fa-2x"></i></span>
+<% else %>
+  <div class="d-flex">
+    <%= form_with url: vote_movies_path, method: :put, local: false do |f| %>
+      <%= f.hidden_field :movie_id, value: movie.id %>
+      <%= f.hidden_field :vote_option, value: 'voted_up' %>
+      <%= button_tag type: 'submit', class: 'button-vote text-primary' do %>
+        <i class="far fa-thumbs-up fa-2x"></i>
+      <% end %>
+    <% end %>
+
+    <%= form_with url: vote_movies_path, method: :put, local: false do |f| %>
+      <%= f.hidden_field :movie_id, value: movie.id %>
+      <%= f.hidden_field :vote_option, value: 'voted_down' %>
+      <%= button_tag type: 'submit', class: 'button-vote text-primary' do %>
+        <i class="far fa-thumbs-down fa-2x"></i>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
