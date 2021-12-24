@@ -3,7 +3,7 @@
     <% if @movies.size.positive? %>
       <%= render @movies %>
     <% else %>
-      <span>No data</span>
+      <%= render 'layouts/no_data' %>
     <% end %>
   </div>
 </div>
