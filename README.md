@@ -17,5 +17,5 @@ bundle exec rubocop
 ```
 
 # Staging url
-https://duyet-remitano.herokuapp.com/
+https://duyet-youtube-sample.herokuapp.com/
 
