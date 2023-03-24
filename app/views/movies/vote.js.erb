@@ -1,6 +1,8 @@
 <% if @movie.present? %>
   $(".js--vote-state-<%= @movie.id %>")
-    .replaceWith("<%= escape_javascript render(:partial => 'movies/vote_state', :locals => { movie: @movie }) %>")
+    .html("<%= escape_javascript render(:partial => 'movies/vote_state', :locals => { movie: @movie }) %>")
+  $(".js--vote-state-<%= @movie.id %>").closest('.movie-details').find('.js--voting-count')
+    .html("<%= escape_javascript render(:partial => 'movies/voting_count', :locals => { movie: @movie }) %>")
 <% else %>
   let message = "<div class='alert alert-danger'>You voted it already. Please refresh page.</div>"
   $('#error-messages').html(message)

@@ -1,4 +1,4 @@
-<div class="row mt-5" id="movie-details">
+<div class="row mt-5 movie-details">
   <div class="col-4">
     <iframe width="100%" height="200"
             src="<%= movie.embed_url %>">
@@ -11,9 +11,14 @@
         <div class="author mt-2">
           <strong>Shared by:</strong> <%= movie.user.email %>
         </div>
+        <% if current_user.present? %>
+          <div class="js--voting-count">
+            <%= render 'movies/voting_count', movie: movie %>
+          </div>
+        <% end  %>
       </div>
       <% if current_user.present? %>
-        <div class="vote float-right js--vote-state-<%= movie.id %>">
+        <div class="vote no-wrap float-right js--vote-state-<%= movie.id %>">
           <%= render 'movies/vote_state', movie: movie %>
         </div>
       <% end %>

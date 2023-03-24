@@ -13,7 +13,7 @@ class UserSessionTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select 'header .user-profiles', user.email
+    assert_includes(assert_select('header .user-profiles').text, user.email)
     assert_includes(assert_select('#js__flash-area').text, 'Sign in successfully!')
   end
 
@@ -43,7 +43,7 @@ class UserSessionTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
-    assert_select 'header .user-profiles', 'newuser@example.com'
+    assert_includes(assert_select('header .user-profiles').text, 'newuser@example.com')
     assert_includes(assert_select('#js__flash-area').text, 'Your account is created successfully')
   end
 end

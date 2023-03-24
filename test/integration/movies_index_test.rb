@@ -17,9 +17,9 @@ class MoviesIndexTest < ActionDispatch::IntegrationTest
   end
 
   test 'Display correct movie information' do
-    assert_equal(assert_select('#movie-details').size, 2)
-    first_block_movie = assert_select('#movie-details').first
-    last_block_movie = assert_select('#movie-details').last
+    assert_equal(assert_select('.movie-details').size, 2)
+    first_block_movie = assert_select('.movie-details').first
+    last_block_movie = assert_select('.movie-details').last
 
     assert_equal(first_block_movie.search('.movie_title').text, 'Movie 2 title')
     assert_equal(first_block_movie.search('.movie_title').attribute('href').value, "https://youtu.be/BBBBBBBBBBB")
@@ -33,14 +33,14 @@ class MoviesIndexTest < ActionDispatch::IntegrationTest
   end
 
   test "Unauthenticated user unable to see button vote." do
-    first_block_movie = assert_select('#movie-details').first
+    first_block_movie = assert_select('.movie-details').first
     assert_equal(first_block_movie.search('.vote').size, 0)
   end
 
   test "Authenticated user able to see vote up or vote down" do
     sign_in_as(user1)
     get '/'
-    first_block_movie = assert_select('#movie-details').first
+    first_block_movie = assert_select('.movie-details').first
     assert_equal(first_block_movie.search('.vote').size, 1)
   end
 

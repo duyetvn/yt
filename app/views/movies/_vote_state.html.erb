@@ -1,7 +1,7 @@
 <% if current_user.state_voting_movie(movie) == Vote.states['voted_up'] %>
-  <span><i class="fas fa-thumbs-up fa-2x"></i></span>
+  <span><i class="fas fa-thumbs-up fa-2x"></i></span> (Voted up)
 <% elsif current_user.state_voting_movie(movie) == Vote.states['voted_down'] %>
-  <span><i class="fas fa-thumbs-down fa-2x"></i></span>
+  <span><i class="fas fa-thumbs-down fa-2x"></i></span> (Voted down)
 <% else %>
   <div class="d-flex">
     <%= form_with url: vote_movies_path, method: :put, local: false do |f| %>
@@ -19,5 +19,6 @@
         <i class="far fa-thumbs-down fa-2x"></i>
       <% end %>
     <% end %>
+    (Un voted)
   </div>
 <% end %>
