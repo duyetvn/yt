@@ -17,5 +17,5 @@ bundle exec rubocop
 ```
 
 # Staging url
-https://duyet-youtube-sample.herokuapp.com/
+https://dry-temple-27154.herokuapp.com/
 
